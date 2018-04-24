@@ -1,0 +1,225 @@
+<html>
+
+<head>
+<meta charset="utf-8"/>
+<title>Sudoku game</title>
+    <style>
+	 body {
+            background-image: url("image.jpg");
+            background-repeat: no-repeat;
+            background-size:cover;
+        }
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            display: inline-block;
+            font-size: 50px;
+        }
+
+        h1 {
+            color: green;
+            font-size: 75px;
+        }
+
+        .wrapper {
+            margin-top: 75;
+            text-align: center;
+        }
+
+        .wrapper2 {
+            margin-top: 35;
+            text-align: center;
+        }
+
+        table {
+            border: 7px solid green;
+            width: 250px;
+            height: 250px;
+            border-collapse: collapse;
+        }
+
+        input[type="text"] {
+            width: 55px;
+            height: 75px;
+            font-size: 50px;
+            text-align: center;
+            color: #4CAF50;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <table border="2" align="center">
+            <tr>
+                <td>
+                    <input type="text" id="t1"> </td>
+                <td>
+                    <input type="text" id="t2"> </td>
+                <td>
+                    <input type="text" id="t3"> </td>
+                <td>
+                    <input type="text" id="t4"> </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="text" id="t5"> </td>
+                <td>
+                    <input type="text" id="t6"> </td>
+                <td>
+                    <input type="text" id="t7"> </td>
+                <td>
+                    <input type="text" id="t8"> </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="text" id="t9"> </td>
+                <td>
+                    <input type="text" id="t10"> </td>
+                <td>
+                    <input type="text" id="t11"> </td>
+                <td>
+                    <input type="text" id="t12"> </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="text" id="t13"> </td>
+                <td>
+                    <input type="text" id="t14"> </td>
+                <td>
+                    <input type="text" id="t15"> </td>
+                <td>
+                    <input type="text" id="t16"> </td>
+            </tr>
+        </table>
+
+        <div class="wrapper2">
+            <input type="button" value="Solve" onclick="JSolve()" class="button">
+            <input type="button" value="Reset" onclick="JReset()" class="button">
+            <input type="button" value="Check" onclick="JCheck()" class="button">
+            <input type="button" value="Play Another Game" onclick="JPlay()" class="button">
+        </div>
+
+
+        <h1 id="text"> </h1>
+    </div>
+</body>
+<script type="text/javascript">
+
+
+    var Level = localStorage.getItem("GameLevel");
+    var Numbers = localStorage.getItem("GameNumbers");
+
+    var suduArray = new Array(16);
+    var realArray = new Array(16);
+    var checkArray = new Array(16);
+
+    var easyArray = new Array(3);
+    var mediArray = new Array(6);
+    var hardArray = new Array(9);
+
+    var j = 0;
+
+    for (i = 0; i < 16; i++) {
+        suduArray[i] = parseInt(Numbers[j]);
+        realArray[i] = parseInt(Numbers[j]);
+        j = j + 2;
+    }
+
+    if (Level == "Easy") {
+        var C = 0;
+        while (C < 3) {
+            var Num = Math.floor(Math.random() * 16);
+            if (!easyArray.includes(Num)) {
+                easyArray.push(Num);
+                suduArray[Num] = null;
+                C++;
+            }
+        }
+    }
+
+    if (Level == "Medium") {
+        var C = 0;
+        while (C < 6) {
+            var Num = Math.floor(Math.random() * 16);
+            if (!mediArray.includes(Num)) {
+                mediArray.push(Num);
+                suduArray[Num] = null;
+                C++;
+            }
+        }
+    }
+
+
+    if (Level == "Hard") {
+        var C = 0;
+        while (C < 9) {
+            var Num = Math.floor(Math.random() * 16);
+            if (!hardArray.includes(Num)) {
+                hardArray.push(Num);
+                suduArray[Num] = null;
+                C++;
+            }
+        }
+    }
+
+    for (i = 0; i < 16; i++) {
+        document.getElementById("t" + (i + 1)).value = suduArray[i];
+    }
+
+    function JSolve() {
+        for (i = 0; i < 16; i++) {
+            document.getElementById("t" + (i + 1)).value = realArray[i];
+        }
+        document.getElementById("text").innerHTML = "";
+    }
+
+    function JReset() {
+        for (i = 0; i < 16; i++) {
+            document.getElementById("t" + (i + 1)).value = suduArray[i];
+        }
+        for (i = 0; i < 16; i++) {
+            checkArray[i] = 0;
+        }
+        document.getElementById("text").innerHTML = "";
+    }
+
+    function JPlay() {
+        window.location.href = "SUDOKU.html";
+    }
+
+    function JCheck() {
+
+        for (i = 0; i < 16; i++) {
+            var Val = document.getElementById("t" + (i + 1)).value;
+            checkArray[i] = Val;
+        }
+
+        var bolcheck;
+        for (i = 0; i < 16; i++) {
+            if (checkArray[i] == realArray[i]) {
+                bolcheck = true;
+            }
+            else {
+                bolcheck = false;
+                break;
+            }
+        }
+        if (bolcheck == true) {
+            document.getElementById("text").innerHTML = "Problem Solved";
+        }
+        else {
+            document.getElementById("text").innerHTML = "Wrong";
+        }
+    }
+</script>
+
+</html>

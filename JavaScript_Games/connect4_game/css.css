@@ -1,0 +1,15 @@
+
+header { border-bottom: 1px solid #000; }
+header > h4 { display: inline-block; }
+header span { margin-left: 10px; }
+
+body {
+    background-image: url("9.jpg");
+}
+.button {
+    background-color: #d3d3d3;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
