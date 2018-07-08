@@ -13,6 +13,8 @@ How to play bejeweled game
 -The player has 60 seconds to collect as he/she can get points by collecting 4 successive candies with the same 
 type in same row or column.
 
+![bej](https://user-images.githubusercontent.com/24354705/42424324-c439a0ee-830a-11e8-8a0f-3fdc67d50bad.PNG)
+
 ------------------------------------------------------------------------------------------------------------------
 
 2-Shape Attack Game
@@ -24,6 +26,8 @@ according to the shape falling from the top side.
 
 -For each correct match between your shape and the falling shape you gain a point and sometimes you get 
 a jewel with 5 points but if you fail to match the two shapes you lose. 
+
+![attack](https://user-images.githubusercontent.com/24354705/42424312-aebd88b6-830a-11e8-9429-b61ef351df79.PNG)
 
 ------------------------------------------------------------------------------------------------------------------
 
@@ -38,6 +42,8 @@ ex: Player 1 : (Abanoub). if you don't need to enter your name you can let it em
 
 3- try to connect 4 successive circles vertically or horizontally or diagonally 
 from the same color to win.
+
+![connect](https://user-images.githubusercontent.com/24354705/42424323-bcd1d47a-830a-11e8-8baf-ffc9e1bab19d.PNG)
 
 ------------------------------------------------------------------------------------------------------------------
 
@@ -56,3 +62,4 @@ The Numbers are auto generated at each game "No Saved Templates" and the places 
 
 You can check your answer whether it is true or false and also you can solve the problem.
 
+![sud](https://user-images.githubusercontent.com/24354705/42424309-9aaa192a-830a-11e8-9491-60ba979cad7c.PNG)
